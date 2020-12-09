@@ -2,10 +2,28 @@
   "name": "agroecoloscore",
   "version": "0.1.0",
   "private": true,
-  "description": "<your project description>",
-  "author": "<author of app>",
+  "description": "Score du degré d'agroécologie d'une exploitation agricole",
+  "author": "Hugo Lehoux - Agrarian Systems Consulting",
   "build": {
-    "appId": "<com.your_app>"
+    "appId": "org.agrarian-systems.agroecoloscore",
+    "copyright": "Copyright Agrarian Systems Consulting",
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    },
+    "mac": {
+      "category": "public.app-category.productivity",
+      "target": "dmg"
+    },
+    "win": {
+      "target": "zip"
+    },
+    "linux": {
+      "category": "Utility"
+    }
   },
   "main": "public/electron.js",
   "homepage": "./",
@@ -38,9 +56,13 @@
     "react-test": "react-scripts test --env=jsdom",
     "react-eject": "react-scripts eject",
     "electron-build": "electron-builder",
+    "electron-build-mac": "electron-builder -m",
     "release": "yarn react-build && electron-builder --publish=always",
     "build": "yarn react-build && yarn electron-build -mwl",
+    "build-all": "yarn react-build && yarn electron-build -mwl",
     "build-win": "yarn react-build && yarn electron-build -w",
+    "build-mac": "yarn react-build && yarn electron-build -m",
+    "build-linux": "yarn react-build && yarn electron-build -l",
     "start": "concurrently \"cross-env BROWSER=none yarn react-start\" \"wait-on http://localhost:3000 && electron .\""
   },
   "eslintConfig": {
