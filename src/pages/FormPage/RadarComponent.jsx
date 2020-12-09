@@ -3,39 +3,23 @@ import { Radar } from '@nivo/radar';
 import { Segment } from 'semantic-ui-react';
 
 const RadarComponent = ({ values, themes }) => {
+  const data = themes.map((theme) => {
+    return {
+      theme: theme.text,
+      Exploitation: (
+        (theme.questions.reduce((total, q) => {
+          return total + parseInt(values[q.id], 10);
+        }, 0) /
+          theme.max) *
+        100
+      ).toFixed(0),
+    };
+  });
+
   return (
     <Segment>
       <Radar
-        data={[
-          {
-            theme: themes.find((theme) => theme.id === '1').text,
-            Exploitation:
-              ((parseInt(values.diversite_de_cultures, 10) +
-                parseInt(values.animaux_d_elevage, 10)) /
-                themes['1'].text) *
-              100,
-          },
-          {
-            theme: 'Synergies',
-            Exploitation: 24,
-          },
-          {
-            theme: 'Autonomie',
-            Exploitation: 45,
-          },
-          {
-            theme: 'Protection des sols et recyclage',
-            Exploitation: 17,
-          },
-          {
-            theme: 'Variétés locales et savoir-faire locaux',
-            Exploitation: 80,
-          },
-          {
-            theme: 'Economie circulaire et solidaire',
-            Exploitation: 100,
-          },
-        ]}
+        data={data}
         keys={['Exploitation']}
         indexBy='theme'
         maxValue='100'
