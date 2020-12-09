@@ -1,6 +1,6 @@
 {
   "name": "agroecoloscore",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "repository": "https://github.com/agrarian-systems-consulting/agroecoloscore",
   "description": "Score du degré d'agroécologie d'une exploitation agricole",
   "author": "Hugo Lehoux - Agrarian Systems Consulting",
@@ -14,12 +14,13 @@
     "directories": {
       "buildResources": "assets"
     },
+    "publish": {
+      "provider": "github"
+    },
     "mac": {
-      "category": "public.app-category.productivity",
-      "target": "dmg"
+      "category": "public.app-category.productivity"
     },
     "win": {
-      "target": "zip",
       "certificateFile": "private/agroecoloscore.p12",
       "certificatePassword": "",
       "verifyUpdateCodeSignature": false
@@ -42,6 +43,8 @@
     "@types/react-dom": "^16.9.8",
     "cross-env": "^7.0.3",
     "electron-is-dev": "^1.2.0",
+    "electron-log": "^4.3.0",
+    "electron-updater": "^4.3.5",
     "formik": "^2.2.5",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
@@ -61,8 +64,8 @@
     "electron-build": "electron-builder",
     "electron-build-mac": "electron-builder -m",
     "electron-build-win": "electron-builder -w",
-    "release": "yarn react-build && electron-builder --publish=always",
-    "build": "yarn react-build && yarn electron-build -mwl",
+    "release": "yarn react-build && electron-builder -mw --publish=onTagOrDraft",
+    "build": "yarn react-build && yarn electron-build",
     "build-all": "yarn react-build && yarn electron-build -mwl",
     "build-win": "yarn react-build && yarn electron-build -w",
     "build-mac": "yarn react-build && yarn electron-build -m",
@@ -91,6 +94,7 @@
     "concurrently": "^5.3.0",
     "electron": "^11.0.4",
     "electron-builder": "^22.9.1",
+    "electron-notarize": "^1.0.0",
     "wait-on": "^5.2.0"
   }
 }
