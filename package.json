@@ -19,7 +19,10 @@
       "target": "dmg"
     },
     "win": {
-      "target": "zip"
+      "target": "zip",
+      "certificateFile": "private/agroecoloscore.p12",
+      "certificatePassword": "",
+      "verifyUpdateCodeSignature": false
     },
     "linux": {
       "category": "Utility"
@@ -57,6 +60,7 @@
     "react-eject": "react-scripts eject",
     "electron-build": "electron-builder",
     "electron-build-mac": "electron-builder -m",
+    "electron-build-win": "electron-builder -w",
     "release": "yarn react-build && electron-builder --publish=always",
     "build": "yarn react-build && yarn electron-build -mwl",
     "build-all": "yarn react-build && yarn electron-build -mwl",
