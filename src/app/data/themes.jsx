@@ -4,6 +4,21 @@ const themes = [
     text: 'Agrobiodiversité et élevage',
     slug: 'agrobiodiversite_et_elevage',
     max: 6,
+    maximum: function () {
+      let maximumTheme = 0;
+
+      this.questions.map((question) => {
+        question.options.reduce((max, question) => {
+          max =
+            parseInt(question.value, 10) > max
+              ? parseInt(question.value, 10)
+              : max;
+          return (max += maximumTheme);
+        }, 0);
+      });
+
+      return maximumTheme;
+    },
     questions: [
       {
         text: 'Diversité de cultures',

@@ -7,7 +7,7 @@ const ScoreLabelComponent = ({ theme, val }) => {
       {theme.questions.reduce((total, q) => {
         return total + parseInt(val[q.id], 10);
       }, 0)}{' '}
-      / {theme.max}
+      / {theme.maximum()}
     </Label>
   );
 };
