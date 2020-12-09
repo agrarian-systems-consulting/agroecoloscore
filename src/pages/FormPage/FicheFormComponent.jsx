@@ -12,10 +12,9 @@ import {
 } from 'semantic-ui-react';
 import * as Yup from 'yup';
 import RadarComponent from './RadarComponent';
-import BiodiversiteCultiveeElevageForm from './Themes/BiodiversiteCultiveeElevageForm';
-import SynergiesForm from './Themes/SynergiesForm';
 import themes from '../../app/data/themes';
 import MenuComponent from './MenuComponent';
+import ThemeFormComponent from './ThemeFormComponent';
 
 const FicheFormComponent = () => {
   const [mode, setmode] = useState('form');
@@ -28,10 +27,10 @@ const FicheFormComponent = () => {
   return (
     <Formik
       initialValues={{
-        diversite_de_cultures: '0',
-        animaux_d_elevage: '0',
-        integration_agriculture_elevage: '0',
-        rotations_et_associations: '0',
+        11: '0',
+        12: '0',
+        21: '0',
+        22: '0',
       }}
       onSubmit={(values, { setSubmitting }) => {}}
     >
@@ -53,11 +52,7 @@ const FicheFormComponent = () => {
                   active={mode === 'form'}
                   onClick={() => setmode('form')}
                 >
-                  <Icon
-                    name='file alternate outline
-
-'
-                  />
+                  <Icon name='file alternate outline' />
                 </Button>
                 <Button
                   color='blue'
@@ -74,24 +69,25 @@ const FicheFormComponent = () => {
               <Grid.Column width={3}>
                 <MenuComponent
                   values={values}
+                  themes={themes}
                   selectedTheme={selectedTheme}
                   selectTheme={selectTheme}
                 />
               </Grid.Column>
               <Grid.Column width={13} style={{ paddingLeft: 50 }}>
                 <Form onSubmit={handleSubmit}>
-                  {selectedTheme === 'agrobiodiversite_et_elevage' && (
-                    <BiodiversiteCultiveeElevageForm
-                      theme={themes.find((theme) => theme.id === '1')}
-                      val={values}
-                    />
-                  )}
-                  {selectedTheme === 'synergies' && (
-                    <SynergiesForm
-                      theme={themes.find((theme) => theme.id === '2')}
-                      val={values}
-                    />
-                  )}
+                  {themes.map((theme) => {
+                    if (selectedTheme === theme.slug) {
+                      return (
+                        <ThemeFormComponent
+                          theme={themes.find((t) => t.id === theme.id)}
+                          val={values}
+                        />
+                      );
+                    }
+                  })}
+
+                  {/* <pre>{JSON.stringify(values, true, 2)}</pre> */}
                 </Form>
               </Grid.Column>
             </Grid.Row>

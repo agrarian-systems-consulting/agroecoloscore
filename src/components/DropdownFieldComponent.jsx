@@ -1,11 +1,11 @@
 import React from 'react';
-import SemanticField from '../../../app/utils/forms/SemanticField';
+import SemanticField from '../app/utils/forms/SemanticField';
 import { Form, Header, Label } from 'semantic-ui-react';
 
 const DropdownFieldComponent = ({ question }) => {
   return (
     <SemanticField
-      name={question.slug}
+      name={question.id}
       value=''
       label={question.text}
       component={Form.Dropdown}
