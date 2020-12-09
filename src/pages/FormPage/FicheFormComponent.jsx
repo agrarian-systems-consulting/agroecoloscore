@@ -31,6 +31,7 @@ const FicheFormComponent = () => {
         12: '0',
         21: '0',
         22: '0',
+        23: '0',
       }}
       onSubmit={(values, { setSubmitting }) => {}}
     >
@@ -77,7 +78,10 @@ const FicheFormComponent = () => {
               <Grid.Column width={13} style={{ paddingLeft: 50 }}>
                 <Form onSubmit={handleSubmit}>
                   {themes.map((theme) => {
-                    if (selectedTheme === theme.slug) {
+                    if (
+                      selectedTheme === theme.slug ||
+                      selectedTheme === 'all'
+                    ) {
                       return (
                         <ThemeFormComponent
                           theme={themes.find((t) => t.id === theme.id)}

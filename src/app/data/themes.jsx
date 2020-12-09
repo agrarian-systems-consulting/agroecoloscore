@@ -4,21 +4,6 @@ const themes = [
     text: 'Agrobiodiversité et élevage',
     slug: 'agrobiodiversite_et_elevage',
     max: 6,
-    maximum: function () {
-      let maximumTheme = 0;
-
-      this.questions.map((question) => {
-        question.options.reduce((max, question) => {
-          max =
-            parseInt(question.value, 10) > max
-              ? parseInt(question.value, 10)
-              : max;
-          return (max += maximumTheme);
-        }, 0);
-      });
-
-      return maximumTheme;
-    },
     questions: [
       {
         text: 'Diversité de cultures',
@@ -85,7 +70,7 @@ const themes = [
     id: '2',
     text: 'Synergies',
     slug: 'synergies',
-    max: 12,
+    max: 9,
     questions: [
       {
         text: 'Intégration agriculture-élevage',
@@ -108,41 +93,74 @@ const themes = [
             id: '212',
             value: 2,
             text:
-              '2 - Au total, entre 3 et 4 cultures ou associations de cultures',
+              "2 - Moyenne intégration agriculture-élevage. La majeure partie de l'alimentation animale est produite sur l'exploitation ou sur une exploitation du voisinage proche (y compris pâturage), les déjections animales sont utilisées pour la fertilisation (exploitation ou voisinage proche).	",
           },
           {
             id: '213',
             value: 3,
             text:
-              '3 - Au total, au moins 5 cultures ou associations de cultures',
+              "3 - Forte intégration agriculture-élevage. La majeure partie de l'alimentation animale est produite sur l'exploitation (y compris pâturage), les déjections animales sont utilisées pour la fertilisation (exploitation ou voisinage proche), la traction animale est valorisée.",
           },
         ],
       },
       {
-        text: "Animaux d'élevage",
-        slug: 'animaux_d_elevage',
-
+        text: 'Rotations et associations de cultures',
+        slug: 'rotations_et_associations_de_cultures',
         id: '22',
         options: [
           {
             id: '220',
             value: '0',
-            text: "0 - Absence d'élevage",
+            text: "0 - Absence de rotations et d'associations de culture",
           },
           {
             id: '221',
             value: 1,
-            text: '1 - Une seul espèce animale	',
+            text:
+              '1 - Moins de 50% de la surface cultivée est en rotation de culture ou occupée par des associations de cultures',
           },
           {
             id: '222',
             value: 2,
-            text: '2 - Deux ou trois espèces animales	',
+            text:
+              '2 - Plus de 50% de la surface cultivée est en rotation de culture ou occupée par des associations de cultures',
           },
           {
             id: '223',
             value: 3,
-            text: '3 - Au mois quatre espèces animales	',
+            text:
+              '3 - La totalité de la surface cultivée est en rotation de culture ou occupée par des associations de cultures',
+          },
+        ],
+      },
+      {
+        text: 'Couverture du sol',
+        slug: 'couverture_du_sol',
+        id: '23',
+        options: [
+          {
+            id: '230',
+            value: '0',
+            text:
+              '0 - La totalité des sols sont labourés ou laissés nus (absence de résidus ou plantes de couvertures) après les récoltes',
+          },
+          {
+            id: '231',
+            value: 1,
+            text:
+              '1 - Moins de 50% de la surface cultivée est protégée dans les mois suivants les récoltes par des résidus ou des plantes de couverture	',
+          },
+          {
+            id: '232',
+            value: 2,
+            text:
+              '2 - Plus de 50% de la surface cultivée est protégée dans les mois suivants les récoltes par des résidus ou des plantes de couverture	',
+          },
+          {
+            id: '233',
+            value: 3,
+            text:
+              '3 - La totalité de la surface cultivée est protégée dans les mois suivants les récoltes par des résidus ou des plantes de couverture	',
           },
         ],
       },
