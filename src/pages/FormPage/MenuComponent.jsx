@@ -17,7 +17,7 @@ const MenuComponent = ({ themes, values, selectedTheme, selectTheme }) => {
               active={selectedTheme === t.slug}
               onClick={() => selectTheme(t.slug)}
             >
-              {t.text}
+              {t.short}
               <Label circular floating>
                 {t.questions.reduce((total, q) => {
                   return total + parseInt(values[q.id], 10);
@@ -37,7 +37,7 @@ const MenuComponent = ({ themes, values, selectedTheme, selectTheme }) => {
               active={selectedTheme === t.slug}
               onClick={() => selectTheme(t.slug)}
             >
-              {t.text}
+              {t.short}
               <Label color='orange' circular floating>
                 {t.questions.reduce((total, q) => {
                   return total + parseInt(values[q.id], 10);
@@ -57,7 +57,7 @@ const MenuComponent = ({ themes, values, selectedTheme, selectTheme }) => {
               active={selectedTheme === t.slug}
               onClick={() => selectTheme(t.slug)}
             >
-              {t.text}
+              {t.short}
 
               <Label color='yellow' circular floating>
                 {t.questions.reduce((total, q) => {
@@ -78,7 +78,7 @@ const MenuComponent = ({ themes, values, selectedTheme, selectTheme }) => {
               active={selectedTheme === t.slug}
               onClick={() => selectTheme(t.slug)}
             >
-              {t.text}
+              {t.short}
 
               <Label color='olive' circular floating>
                 {t.questions.reduce((total, q) => {
@@ -99,7 +99,7 @@ const MenuComponent = ({ themes, values, selectedTheme, selectTheme }) => {
               active={selectedTheme === t.slug}
               onClick={() => selectTheme(t.slug)}
             >
-              {t.text}
+              {t.short}
 
               <Label color='green' circular floating>
                 {t.questions.reduce((total, q) => {
@@ -116,11 +116,45 @@ const MenuComponent = ({ themes, values, selectedTheme, selectTheme }) => {
         onClick={() => selectTheme('all')}
       >
         Tous les thèmes
-        <Label color='pink' circular floating>
-          {Object.values(values).reduce((total, value) => {
+        {Object.values(values).reduce((total, value) => {
+          return total + parseInt(value, 10);
+        }, 0) < 11 ? (
+          <Label color='pink' circular floating>
+            {Object.values(values).reduce((total, value) => {
+              return total + parseInt(value, 10);
+            }, 0)}
+          </Label>
+        ) : Object.values(values).reduce((total, value) => {
             return total + parseInt(value, 10);
-          }, 0)}
-        </Label>
+          }, 0) < 22 ? (
+          <Label color='orange' circular floating>
+            {Object.values(values).reduce((total, value) => {
+              return total + parseInt(value, 10);
+            }, 0)}
+          </Label>
+        ) : Object.values(values).reduce((total, value) => {
+            return total + parseInt(value, 10);
+          }, 0) < 33 ? (
+          <Label color='yellow' circular floating>
+            {Object.values(values).reduce((total, value) => {
+              return total + parseInt(value, 10);
+            }, 0)}
+          </Label>
+        ) : Object.values(values).reduce((total, value) => {
+            return total + parseInt(value, 10);
+          }, 0) < 44 ? (
+          <Label color='olive' circular floating>
+            {Object.values(values).reduce((total, value) => {
+              return total + parseInt(value, 10);
+            }, 0)}
+          </Label>
+        ) : (
+          <Label color='green' circular floating>
+            {Object.values(values).reduce((total, value) => {
+              return total + parseInt(value, 10);
+            }, 0)}
+          </Label>
+        )}
       </Menu.Item>
 
       {/* <pre>{JSON.stringify(themes, true, 2)}</pre> */}
