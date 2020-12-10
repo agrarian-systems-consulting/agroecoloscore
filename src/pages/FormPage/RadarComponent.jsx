@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Radar } from '@nivo/radar';
 import { Header, Segment } from 'semantic-ui-react';
 
@@ -17,10 +17,8 @@ const RadarComponent = ({ values, themes }) => {
   });
 
   return (
-    <Segment.Group>
-      <Segment attached='top'>
-        <Header as='h4'>Radar de score d'agroécologie</Header>
-      </Segment>
+    <Fragment>
+      <Header as='h3'>Radar d'agroécoloscore</Header>
       <Segment attached='bottom'>
         <Radar
           data={data}
@@ -82,7 +80,7 @@ const RadarComponent = ({ values, themes }) => {
           ]}
         />
       </Segment>
-    </Segment.Group>
+    </Fragment>
   );
 };
 

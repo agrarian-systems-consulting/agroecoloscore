@@ -74,16 +74,17 @@ const FicheFormComponent = () => {
               </Button.Group>
             </Grid.Column>
           </Grid.Row>
-          {mode === 'form' && (
-            <Grid.Row>
-              <Grid.Column width={3}>
-                <MenuComponent
-                  values={values}
-                  themes={themes}
-                  selectedTheme={selectedTheme}
-                  selectTheme={selectTheme}
-                />
-              </Grid.Column>
+
+          <Grid.Row>
+            <Grid.Column width={3}>
+              <MenuComponent
+                values={values}
+                themes={themes}
+                selectedTheme={selectedTheme}
+                selectTheme={selectTheme}
+              />
+            </Grid.Column>
+            {mode === 'form' && (
               <Grid.Column width={13} style={{ paddingLeft: 50 }}>
                 <Form onSubmit={handleSubmit}>
                   {themes.map((theme) => {
@@ -103,8 +104,8 @@ const FicheFormComponent = () => {
                   {/* <pre>{JSON.stringify(values, true, 2)}</pre> */}
                 </Form>
               </Grid.Column>
-            </Grid.Row>
-          )}
+            )}
+          </Grid.Row>
 
           {mode === 'chart' && (
             <Grid.Row centered>
@@ -113,6 +114,13 @@ const FicheFormComponent = () => {
               </Grid.Column>
             </Grid.Row>
           )}
+          <Header as='h5' style={{ margin: 50 }}>
+            L'outil a été développé par Hugo Lehoux -{' '}
+            <a href='http://agrarian-systems.org'>
+              Agrarian Systems Consulting
+            </a>{' '}
+            sur la base des travaux du GTAE.
+          </Header>
         </Grid>
       )}
     </Formik>
