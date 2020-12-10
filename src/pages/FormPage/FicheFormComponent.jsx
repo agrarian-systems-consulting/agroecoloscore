@@ -18,9 +18,7 @@ import ThemeFormComponent from './ThemeFormComponent';
 
 const FicheFormComponent = () => {
   const [mode, setmode] = useState('form');
-  const [selectedTheme, setSelectedTheme] = useState(
-    'agrobiodiversite_et_elevage'
-  );
+  const [selectedTheme, setSelectedTheme] = useState('all');
 
   const selectTheme = (name) => setSelectedTheme(name);
 
