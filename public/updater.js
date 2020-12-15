@@ -15,18 +15,19 @@ module.exports = () => {
   // Listen for update found
   autoUpdater.on('update-available', () => {
     // Prompt user to start download
-    dialog
-      .showMessageBox({
-        type: 'info',
-        title: 'Mise à jour disponible',
-        message:
-          "Une nouvelle version de l'application est disponible. Souhaitez-vous mettre à jour Agroecoloscore ?",
-        buttons: ['Mettre à jour', 'Non'],
-      })
-      .then((result) => {
-        let buttonIndex = result.response;
-        if (buttonIndex === 0) autoUpdater.downloadUpdate();
-      });
+    // dialog
+    //   .showMessageBox({
+    //     type: 'info',
+    //     title: 'Mise à jour disponible',
+    //     message:
+    //       "Une nouvelle version de l'application est disponible. Souhaitez-vous mettre à jour Agroecoloscore ?",
+    //     buttons: ['Mettre à jour', 'Non'],
+    //   })
+    //   .then((result) => {
+    //     let buttonIndex = result.response;
+    //     if (buttonIndex === 0) autoUpdater.downloadUpdate();
+    //   });
+
     autoUpdater.downloadUpdate();
   });
 
@@ -36,7 +37,8 @@ module.exports = () => {
     dialog
       .showMessageBox({
         type: 'info',
-        title: 'Mise à jour est prête à être installée',
+        title:
+          "Une nouvelle version de l'application est disponible. Souhaitez-vous mettre à jour Agroecoloscore ?",
         message: "Souhaitez-vous l'installer et redémarrer Agroecoloscore ?",
         buttons: ['Oui', 'Plus tard'],
       })

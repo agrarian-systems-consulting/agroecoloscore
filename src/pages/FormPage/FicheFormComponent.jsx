@@ -20,7 +20,10 @@ const FicheFormComponent = () => {
   const [mode, setmode] = useState('form');
   const [selectedTheme, setSelectedTheme] = useState('all');
 
-  const selectTheme = (name) => setSelectedTheme(name);
+  const selectTheme = (name) => {
+    setmode('form');
+    setSelectedTheme(name);
+  };
 
   return (
     <Formik
@@ -105,22 +108,24 @@ const FicheFormComponent = () => {
                 </Form>
               </Grid.Column>
             )}
-          </Grid.Row>
-
-          {mode === 'chart' && (
-            <Grid.Row centered>
-              <Grid.Column width={11}>
+            {mode === 'chart' && (
+              <Grid.Column width={13} style={{ paddingLeft: 50 }}>
                 <RadarComponent values={values} themes={themes} />
               </Grid.Column>
-            </Grid.Row>
-          )}
-          <Header as='h5' style={{ margin: 50 }}>
-            L'outil a été développé par Hugo Lehoux -{' '}
-            <a href='http://agrarian-systems.org'>
-              Agrarian Systems Consulting
-            </a>{' '}
-            sur la base des travaux du GTAE.
-          </Header>
+            )}
+          </Grid.Row>
+
+          <Grid.Row centered>
+            <Grid.Column width={16}>
+              <Header as='h5' style={{ margin: 50 }}>
+                L'outil a été développé par Hugo Lehoux -{' '}
+                <a href='http://agrarian-systems.org'>
+                  Agrarian Systems Consulting
+                </a>{' '}
+                sur la base des travaux du GTAE.
+              </Header>{' '}
+            </Grid.Column>
+          </Grid.Row>
         </Grid>
       )}
     </Formik>
