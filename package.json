@@ -1,6 +1,6 @@
 {
-  "name": "agroecoloscore",
-  "version": "1.0.2",
+  "name": "Agroecoloscore",
+  "version": "1.0.3",
   "repository": "https://github.com/agrarian-systems-consulting/agroecoloscore",
   "description": "Score du degré d'agroécologie d'une exploitation agricole",
   "author": "Hugo Lehoux - Agrarian Systems Consulting",
